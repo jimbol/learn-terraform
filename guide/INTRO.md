@@ -15,10 +15,11 @@ Examples of infrastructure as code tools:
 ## What is Terraform
 Terraform is HashiCorp's infrastructure as code tool. It uses the HashiCorp configuration language to allow devops engineers to write readable, declarative, reusable configurations for infrastructure. It also provids a command-line tool that provides a straight-forward workflow for updates.
 
-Terraform has some advantages over other IoT options:
+Terraform has some advantages over other IaC options:
 - You can use it to deploy to multiple cloud platforms and services.
 - It used HashiCorp Configuration Language (HCL) which is easy to read, understand, and write.
 - It has a built-in workflow.
+- Provider specific definitions
 
 ## Terraform Use Cases
 Terraform use cases are as varied as all devops projects.
