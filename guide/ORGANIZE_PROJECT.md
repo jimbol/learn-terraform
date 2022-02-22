@@ -252,6 +252,9 @@ I can also create a `.tfvars` file instead and use that when calling apply.
 env = "dev"
 ```
 
+Then call apply with that variable file
+```
 terraform apply -var-file="dev.tfvars"
+```
 
 [Next: Expressions](EXPRESSIONS.md)

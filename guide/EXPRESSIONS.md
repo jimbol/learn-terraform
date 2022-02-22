@@ -34,7 +34,7 @@ variable "subnet_cidr_blocks_map" {
 ## Operators
 Terraform uses standard operators that you're probably familiar with.
 
-- Mathmatic Operators: `+ - * / %`
+- Mathematical Operators: `+ - * / %`
 - Equality Operators: `x == y`, `x != y`
 - Comparison Operators: `x < y`, `x >= y`
 - Logical Operators: `x || y`, `x && y`
