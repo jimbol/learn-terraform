@@ -17,7 +17,7 @@ Terraform is HashiCorp's infrastructure as code tool. It uses the HashiCorp conf
 
 Terraform has some advantages over other IaC options:
 - You can use it to deploy to multiple cloud platforms and services.
-- It used HashiCorp Configuration Language (HCL) which is easy to read, understand, and write.
+- It uses HashiCorp Configuration Language (HCL) which is easy to read, understand, and write.
 - It has a built-in workflow.
 - Provider specific definitions
 

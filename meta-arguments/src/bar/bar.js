@@ -1,6 +1,6 @@
 module.exports.handler = async (event) => {
   console.log('EVENT: ', event);
-  let message = 'Bar was called!';
+  const message = 'Bar was called!';
 
   return {
     statusCode: 200,

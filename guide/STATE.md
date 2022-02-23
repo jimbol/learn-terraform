@@ -11,7 +11,7 @@ Right now, the terraform state would be included in my git repository. But becau
 
 For these reasons, Terraform allows us to set up backends (see the [backend documentation](https://www.terraform.io/language/settings/backends)). Backends are a centralized location for our tfstate that exists outside of the normal source control. The remote tfstate is kept up-to-date with what has been deployed and utilizes a lock when updating to prevent overwrites. All team members pull from this one state file.
 
-There are many backend services available. Asurerm, AWS S3/DynamoDB, Postgres, Google Cloud Storage, etc. Today, we'll use S3/DynamoDB.
+There are many backend services available. Azurerm, AWS S3/DynamoDB, Postgres, Google Cloud Storage, etc. Today, we'll use S3/DynamoDB.
 
 First we need an S3 bucket. This is where the tfstate file will actually be stored.
 

@@ -1,5 +1,5 @@
 # Meta-Arguments
-Available on every module and resource are a set of "meta-arguments" that allow you to create multiple versions of the module or resource.
+Available on every module and resource are a set of "meta-arguments" that enable some powerful functionallity.
 
 - `depends_on` - Make explicit an implicit dependency
 - `count` - Make like copies
@@ -9,7 +9,7 @@ Available on every module and resource are a set of "meta-arguments" that allow 
 The complete example can be found in the [meta-arguments](../meta-arguments) folder. Let's prepare this folder structure before continuing.
 
 ## `depends_on`
-`depends_on` make explicit an implicit dependency. Meaning if the dependency is described via references, we can manually create a reference. This connection gets stored in tfstate and enforces an order of deployment.
+`depends_on` make explicit an implicit dependency. Meaning if the dependency is NOT described via references, we can manually create a reference. This connection gets stored in tfstate and enforces an order of deployment.
 
 Frequently, this isn't needed. For example, lets say we want to add a security group to our EC2 instance. Inside `modules/ec2` lets add the security group.
 
@@ -76,7 +76,7 @@ resource "aws_s3_bucket" "instance_information" {
 
 Right now, there is a chance that when the EC2 instance boots, the S3 bucket won't be there. Lets create an explicit dependency to address that.
 
-```diff
+```tf
 resource "aws_instance" "test_server" {
   ami = "ami-0f19d220602031aed"
   instance_type = "t2.nano"
@@ -93,7 +93,7 @@ resource "aws_instance" "test_server" {
 }
 ```
 
-Looking at the tfstate file we can spot the dependency under the `dependencies` key.
+After applying we can look at the tfstate file and can spot the dependency under the `dependencies` key.
 
 ## `count`
 Perhaps 1 instance isn't enough. Maybe we need to run multiple instances running our application. Enter, the `count` meta-argument. I want 3 copies of this instance, so I'll add `count = 3`.
@@ -163,7 +163,7 @@ resource "aws_elb" "test_load_balancer" {
 Now we can see our load balancer in the console that is directing traffic to the 3 instances. We can adjust this at will.
 
 ## `for_each`
-If we want to create several resources that aren't the same, we can use `for_each` to loop through a list definitions and create resources for each. In this example we will create a couple of lambda functions.
+If we want to create several resources that aren't the same, we can use `for_each` to loop through a list of definitions and create resources for each. In this example we will create a couple of lambda functions.
 
 First lets create the lambda handlers. I'm making a new top-level folder called `src` to house our handlers. We'll call the handlers `src/foo/foo.js` and `src/bar/bar.js`.
 
@@ -172,7 +172,7 @@ Each file will look something like this.
 ```es6
 module.exports.handler = async (event) => {
   console.log('EVENT: ', event);
-  let message = 'Foo was called!';
+  const message = 'Foo was called!';
 
   return {
     statusCode: 200,
@@ -195,7 +195,7 @@ locals {
 }
 ```
 
-Then we're going to use `for_each` and a new type of block called `data`. `data` blocks provide access to data sources. This particular block creates a zip of for files at a given path. We'll get into more uses for `data` later on.
+Then we're going to use `for_each` and a new type of block called `data`. `data` blocks provide access to data sources. This particular block creates a zip of files at a given path. We'll get into more uses for `data` later on.
 
 ```tf
 data "archive_file" "lambda_definitions" {
@@ -207,9 +207,9 @@ data "archive_file" "lambda_definitions" {
 }
 ```
 
-The `for_each` meta-argument is being used here. We're converting the lambdas local to a set, which is like an unordered list, and passing the result into the `for_each` argument. This provides access to the `each` identifier within the block.
+The `for_each` meta-argument is being used here. We're converting the lambdas local to a set, which is like an unordered list with distinct values, and passing the result into the `for_each` argument. This provides access to the `each` identifier within the block.
 
-When defining `source_path` and `output_path`, we use `each.key` to use the set items, the strings `foo` and `bar`.
+When defining `source_path` and `output_path`, we use `each.key` to use the set items; the strings `foo` and `bar`.
 
 Now lets create an S3 bucket and upload both lambdas to that bucket.
 

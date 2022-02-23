@@ -4,7 +4,7 @@
 The Terraform configuration language is a superset of the HashiCorp Configuration language or HCL. HCL is used for other tools created by HashiCorp as well.
 
 ### Declarative
-One key aspect of Terraform's language is that it is *declarative*. The code will be interpeted the same way every time we run it. There is no runtime logic, code forking, or loops. No off-by-1 errors.
+One key aspect of Terraform's language is that it is *declarative*. The code will be interpeted the same way every time we run it. There is no runtime logic, code forking, or loops.
 
 ## Blocks, Arguments, and Identifiers
 ### Blocks
@@ -30,7 +30,7 @@ resource "aws_instance" "test_instance" {
 }
 ```
 
-The arguments depend on the particular block type. Variable blocks allow type, default, and description arguments. Resource arguments are determined by their definition from the provider. For example, see the [aws_instance](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance) resource.
+The arguments depend on the particular block type. Variable blocks allow type, default, sensitive and description arguments. Resource arguments are determined by their definition from the provider. For example, see the [aws_instance](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance) resource.
 
 ### Identifiers
 Argument names, block type names, and labels are all know as identifiers. Pretty much its a name for any given item in Terraform.

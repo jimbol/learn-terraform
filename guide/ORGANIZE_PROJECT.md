@@ -84,13 +84,14 @@ module "compute" {
 }
 ```
 
-Third-party modules are also available such as the excellent [AWS VPC module](https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws/latest). Below is an example, we'll use this later on.
+Third-party modules are also available such as the [AWS VPC module](https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws/latest). Below is an example showing the source syntax.
 
 ```tf
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "3.12.0"
-  # insert the 23 required variables here
+
+  # etc...
 }
 ```
 
@@ -194,7 +195,7 @@ module "vpc" {
 }
 ```
 
-Then we pass use the output in the ec2 instance.
+Then we pass the output into the ec2 instance.
 ```tf
 module "ec2" {
   source = "../modules/aws/ec2"

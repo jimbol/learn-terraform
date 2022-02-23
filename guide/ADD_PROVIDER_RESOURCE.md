@@ -3,7 +3,7 @@ Let's practice adding another provider. You can have one or many providers for a
 
 The complete example can be found in the [add-provider](../add-provider) folder.
 
-## Google Cloud to Terraform Block
+## Add Google Cloud to Terraform Block
 First we can update the terraform block to lock us into a major version of the Google provider.
 
 ```tf
@@ -60,13 +60,13 @@ resource "google_compute_instance" "test_gcp_instance" {
 }
 ```
 
-I can use the gcloud cli to connect to that instance. [Here is a guide to set up gcloud cli.](https://cloud.google.com/sdk/docs/install).
+We can use the gcloud cli to connect to that instance. [Here is a guide to set up gcloud cli](https://cloud.google.com/sdk/docs/install).
 
 ```
 gcloud compute ssh --zone "us-east1-b" "test-gcp-instance-us-east1"  --project "terraform-class-327014"
 ```
 
-## Arguments, Requirements, and Implementation
+## Resource Arguments, Requirements, and Implementation
 Resources in Terraform tend to be very well documented. We can see the docs for google_compute_instance [here](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_instance).
 
 We can see the all the argument options. There are a lot of them because we can do a lot with google_compute_instance. But we really only need the *required* arguments in order to deploy something.

@@ -41,10 +41,10 @@ The opening `terraform {}` block is a sort of requirements declaration for the p
 Providers include a library of resources available. There are different versions of each provider. Restricting the version is important for maintaining consistent configuration across machines. If you don't include a provider version, Terraform will try to pick the latest. This can cause mis-matches across machines. If the project uses more than one cloud provider, you can include the definition for each here.
 
 ### Provider Blocks
-The `provider {}` block defines a specific provider. If we have multiple providers such as AWS *and* Google Cloud, then we will have a separate block for each. Also, if we are working with different regions in AWS, we will need a separate provider block for each. In our case, we provide a profile to give our provider our credentials, and a region to tell the provider where we want this to be deployed to.
+The `provider {}` block defines a specific provider. If we have multiple providers such as AWS *and* Google Cloud, then we will have a separate block for each. Also, if we are working with different regions in AWS, we will need a separate provider block for each. In our case, we pass a profile argument to tell our provider which AWS profile to use, and a region to tell the provider where we want this to be deployed to.
 
 ### Resources
-The `resource` block is used to define resources in our infrastructure. In this example we are creating an `aws_instance` and calling it `test_server`. The name `test_server` needs to be unique within our configs. Elsewhere in the configs we can use this name as a reference: `aws_instance.test_server`. `aws_instance` has many outputs that we can reference as well: `aws_instance.test_server.id`.
+The `resource` block is used to define resources in our infrastructure. In this example we are creating an `aws_instance` and calling it `test_server`. The name `test_server` needs to be unique within our configs. Elsewhere in the configs we can use this name as a reference: `aws_instance.test_server`. `aws_instance` has many outputs that we can reference as well (more on that later).
 
 The definition of `aws_instance` is given by the AWS provider. Terraform provides a reference document for all supported resources.
 
