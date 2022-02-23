@@ -128,3 +128,5 @@ output "script_template" {
   value = data.local_file.script_template
 }
 ```
+
+[Next: Secrets](SECRETS.md)

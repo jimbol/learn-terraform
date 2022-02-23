@@ -257,4 +257,10 @@ Then call apply with that variable file
 terraform apply -var-file="dev.tfvars"
 ```
 
+Or I can create environment variables that always are available.
+
+```
+export TF_VAR_env=dev
+```
+
 [Next: Expressions](EXPRESSIONS.md)
