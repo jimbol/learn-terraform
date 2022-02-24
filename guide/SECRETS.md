@@ -67,3 +67,4 @@ export TF_VAR_password=password1
 
 Third-party secret managers can pick up the work from here.
 
+[Next: Workspaces](WORKSPACES.md)
